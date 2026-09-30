@@ -4,8 +4,16 @@ AI 코딩 도우미(Codex, Claude Code 등)에게 [entry-vibe-coding](https://gi
 저장소 링크를 주고 엔트리 작품을 만드는 법을 설명하는 한 페이지짜리 정적 사이트다.
 환경 준비·게임 요청 프롬프트를 버튼 하나로 복사할 수 있다.
 
-- 라이브: https://205sla.github.io/entry-vibe-coding-guide/
+- 라이브: https://바이브코딩.엔트리.org/ (`https://xn--o01b54khubg9qb1j.xn--oy2b95t44j.org/`)
+  — 옛 주소 `205sla.github.io/entry-vibe-coding-guide/` 는 여기로 넘어간다.
 - 배포: GitHub Pages — `main` 브랜치 루트(`/`). 푸시하면 1~2분 뒤 반영된다.
+
+## 도메인 (2026-10-01 연결)
+
+- DNS 는 GoDaddy(엔트리.org, 네임서버 `domaincontrol.com`): `CNAME xn--o01b54khubg9qb1j → 205sla.github.io`.
+- GitHub Pages 사용자 지정 도메인은 퓨니코드로 넣는다(`CNAME` 파일). HTTPS 강제 켜짐.
+- 인증서가 안 나오면(상태 `none`): DNS 가 퍼진 뒤 사용자 지정 도메인을 지웠다 다시 넣으면 발급이 시작된다
+  (처음 연결 때 DNS 보다 도메인을 먼저 넣어 GitHub 이 "없는 도메인"을 기억했던 경우).
 
 ## 파일
 
