@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>엔트리 바이브코딩 시작하기 — AI에게 줄 프롬프트</title>
+  <meta name="description" content="AI 코딩 도우미에게 저장소 링크와 프롬프트를 주면 엔트리 작품(.ent)을 만들고 직접 실행해 확인합니다. 복사해서 쓰는 추천 프롬프트 모음.">
+  <meta property="og:title" content="엔트리 바이브코딩 시작하기">
+  <meta property="og:description" content="AI에게 저장소 링크를 주고 엔트리 작품을 만드는 법 — 복사해서 쓰는 추천 프롬프트">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f9d8a'/%3E%3Cpath d='M20 18h24v7H28v4h14v7H28v4h16v7H20z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">엔트리 × AI 코딩 도우미</p>
+      <h1>엔트리 바이브코딩 시작하기</h1>
+      <p class="lead">
+        AI 코딩 도우미(무료 ChatGPT로 쓸 수 있는 Codex, Claude Code 등)에게 저장소 링크와 아래 프롬프트를 주면,
+        엔트리 작품 파일(<code>.ent</code>)을 만들고 <strong>직접 실행해서 움직이는지까지 확인</strong>합니다.
+      </p>
+      <p class="repo">
+        저장소: <a href="https://github.com/205sla/entry-vibe-coding">github.com/205sla/entry-vibe-coding</a>
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section aria-labelledby="need">
+      <h2 id="need">준비물</h2>
+      <ul class="checklist">
+        <li><strong>컴퓨터</strong> — Windows, macOS, Linux 모두 됩니다.</li>
+        <li><strong><a href="https://nodejs.org/ko">Node.js</a></strong> — 22 버전 권장(최소 18.18).</li>
+        <li><strong><a href="https://git-scm.com/downloads">git</a></strong> — 저장소를 받을 때 씁니다.</li>
+        <li><strong>인터넷</strong> — 처음 설치할 때 엔트리 엔진 등을 내려받습니다(수 분).</li>
+        <li><strong>AI 코딩 도우미</strong> — 명령을 직접 실행할 수 있는 것(Codex, Claude Code 등).</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="step1">
+      <h2 id="step1"><span class="step">1</span> 환경 준비</h2>
+      <p>
+        빈 폴더를 AI 코딩 도우미의 작업 폴더로 열고 아래 프롬프트를 붙여 넣으세요.
+        설치와 확인 검사까지 알아서 진행하고, 무엇이 통과했는지 보고합니다.
+      </p>
+
+      <div class="prompt">
+        <div class="prompt-head">
+          <span class="prompt-title">환경 준비 — 빈 폴더에서 링크만 줄 때</span>
+          <button type="button" class="copy" data-target="prompt-setup">복사</button>
+        </div>
+        <pre id="prompt-setup"><code>https://github.com/205sla/entry-vibe-coding 저장소로 엔트리 작품을 만들 수 있게 이 PC에 환경을 준비해줘.
+
+1. 저장소를 이 폴더에 클론하고, 클론한 폴더의 AGENTS.md를 먼저 읽어. 거기서 안내하는 CLAUDE.md의
+   "환경 준비"를 그대로 따라 해.
+2. 순서는 npm install → npm run setup → npx playwright install chromium 이야.
+   Chromium은 꼭 npm install 뒤에 설치해.
+   Windows PowerShell에서 npm·npx가 "스크립트를 실행할 수 없으므로"로 막히면 npm.cmd·npx.cmd로 실행해.
+3. 엔트리 엔진(entryjs)은 절대 빌드하지 마. setup이 이미 빌드된 파일을 받아 온다.
+   setup이 실패하면 오류 메시지대로 조치한 뒤 다시 실행해.
+4. 설치가 끝나면 아래로 확인해:
+   - npm run test:smoke
+   - npm run test:e2e   (편집기가 실제로 뜨는지)
+   - node tools/play-check.mjs tests/fixtures/bounce-ball.ent   (예제 게임이 실제로 움직이는지)
+5. 한국어로 보고해줘: 통과한 단계, 실패했거나 못 한 단계와 그 이유, 편집기 여는 방법
+   (npm start → http://localhost:3000). 게임은 아직 만들지 마.</code></pre>
+      </div>
+
+      <details class="alt">
+        <summary>저장소를 이미 받아서 그 폴더를 열었다면 (짧은 판)</summary>
+        <div class="prompt">
+          <div class="prompt-head">
+            <span class="prompt-title">환경 준비 — 클론한 폴더에서</span>
+            <button type="button" class="copy" data-target="prompt-setup-short">복사</button>
+          </div>
+          <pre id="prompt-setup-short"><code>이 폴더는 엔트리 작품 제작 저장소야. AGENTS.md를 먼저 읽고 CLAUDE.md의 "환경 준비"를 그대로 따라 해서
+환경을 준비해줘. entryjs는 빌드하지 말고, PowerShell에서 npm·npx가 막히면 npm.cmd·npx.cmd를 써.
+끝나면 npm run test:smoke, npm run test:e2e, node tools/play-check.mjs tests/fixtures/bounce-ball.ent 로
+확인하고, 통과한 것과 못 한 것(이유 포함)을 한국어로 보고해줘. 게임은 아직 만들지 마.</code></pre>
+        </div>
+      </details>
+    </section>
+
+    <section aria-labelledby="step2">
+      <h2 id="step2"><span class="step">2</span> 게임 만들기</h2>
+      <p>
+        환경 준비가 끝난 같은 대화에서 만들고 싶은 게임을 말하세요. 아래는 예시입니다.
+        <strong>조작 방법, 점수, 끝나는 조건</strong>을 적어 주면 결과가 훨씬 좋아집니다.
+      </p>
+
+      <div class="prompt">
+        <div class="prompt-head">
+          <span class="prompt-title">게임 요청 — 예시: 사과 받기</span>
+          <button type="button" class="copy" data-target="prompt-game">복사</button>
+        </div>
+        <pre id="prompt-game"><code>사과 받기 게임 만들어줘. 방향키로 바구니를 좌우로 움직이고, 떨어지는 사과를 받으면 점수 +1, 3개 놓치면 게임 끝.
+CLAUDE.md의 제작 사이클과 검증 사다리를 따르고, play-check 보고가 내 요청과 맞는지 비교해서 알려줘.</code></pre>
+      </div>
+
+      <p class="note">
+        만든 작품은 <code>games/&lt;이름&gt;/&lt;이름&gt;_001.ent</code>처럼 번호가 붙어 저장되고, 고칠 때마다
+        <code>_002</code>, <code>_003</code>으로 새 파일이 생깁니다. 직접 보려면 <code>npm start</code>를 실행한 뒤
+        브라우저에서 <a href="http://localhost:3000">http://localhost:3000</a>을 열어 <code>.ent</code> 파일을 불러오세요.
+      </p>
+    </section>
+
+    <section aria-labelledby="stuck">
+      <h2 id="stuck">막힐 때</h2>
+
+      <details class="faq">
+        <summary>PowerShell에서 "이 시스템에서 스크립트를 실행할 수 없으므로…"가 나와요</summary>
+        <p>Windows의 실행 정책 때문입니다. 설정을 바꿀 필요 없이 <code>npm</code> 대신 <code>npm.cmd</code>,
+          <code>npx</code> 대신 <code>npx.cmd</code>로 실행하면 됩니다. 위 프롬프트에 이미 들어 있어서 AI가 알아서 바꿉니다.</p>
+      </details>
+
+      <details class="faq">
+        <summary>AI가 명령 실행이나 인터넷 접속을 허용할지 물어봐요</summary>
+        <p>처음 설치할 때 npm, GitHub, 엔트리 사이트에서 파일을 내려받아야 해서 허용이 필요합니다.
+          허용하지 않으면 설치가 중간에 멈춥니다.</p>
+      </details>
+
+      <details class="faq">
+        <summary>설치(setup)가 중간에 실패했어요</summary>
+        <p><code>npm run setup</code>은 여러 번 실행해도 안전합니다. 오류 메시지대로 조치한 뒤 다시 실행하게 하세요.
+          엔트리 엔진을 직접 빌드하려고 하면 멈추게 하세요 — 빌드는 필요 없습니다.</p>
+      </details>
+
+      <details class="faq">
+        <summary>Chromium(검사용 브라우저) 설치가 안 돼요</summary>
+        <p>작품 파일은 그래도 만들어집니다. 다만 실제로 실행해 보는 검사를 못 하므로, AI가 "런타임 검증 미수행 — 사유"를
+          보고에 적게 되어 있습니다. 이때는 <code>npm start</code>로 편집기를 열어 직접 실행해 보세요.</p>
+      </details>
+
+      <details class="faq">
+        <summary>예전에 받아 둔 저장소 폴더가 있어요</summary>
+        <p>새 기능과 수정이 반영되도록 먼저 <code>git pull</code>을 실행하세요.</p>
+      </details>
+
+      <details class="faq">
+        <summary>링크를 줬는데 AI가 문서를 안 읽고 바로 만들어요</summary>
+        <p>저장소 첫 화면 주소(<code>https://github.com/205sla/entry-vibe-coding</code>)를 줬는지 확인하세요.
+          그리고 "AGENTS.md를 먼저 읽고 그대로 따라 해줘"를 한 줄 덧붙이면 대부분 해결됩니다.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p>
+      <a href="https://github.com/205sla/entry-vibe-coding">entry-vibe-coding 저장소</a> ·
+      <a href="https://github.com/205sla/entry-vibe-coding-guide">이 페이지 소스</a> ·
+      만든 사람 <a href="https://github.com/205sla">205</a>
+    </p>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
