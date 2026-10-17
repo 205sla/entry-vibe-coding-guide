@@ -73,6 +73,13 @@ h1 {
 .lead { font-size: 1.08rem; margin: 0 0 12px; }
 .repo { margin: 0; color: var(--muted); }
 
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 20px;
+}
+
 main section { padding: 36px 0 8px; }
 
 .video-frame {
