@@ -24,6 +24,7 @@ AI 코딩 도우미(Codex, Claude Code 등)에게 [entry-vibe-coding](https://gi
 | `style.css` | 스타일(밝은/어두운 테마 자동) |
 | `app.js` | 복사 버튼 — `navigator.clipboard`, 안 되면 textarea 폴백 |
 | `robots.txt` · `sitemap.xml` | 검색엔진 수집 안내와 대표 URL 목록 |
+| `llms.txt` | AI 도구와 독자를 위한 짧은 문서 길잡이 |
 | `indexnow-key.txt` | IndexNow 페이지 갱신 요청용 공개 검증 파일 |
 | `assets/social-preview.png` | 링크 공유용 이미지(1200×630) |
 | `favicon.svg` · `favicon.ico` | 브라우저·검색 결과용 사이트 아이콘 |
@@ -49,6 +50,21 @@ AI 코딩 도우미(Codex, Claude Code 등)에게 [entry-vibe-coding](https://gi
 [네이버 검색엔진 최적화](https://searchadvisor.naver.com/guide/seo-basic-intro),
 [IndexNow 검증 파일](https://searchadvisor.naver.com/guide/indexnow-api-key)·[갱신 요청](https://searchadvisor.naver.com/guide/indexnow-request)·[공통 접수처](https://www.indexnow.org/faq).
 
+## AI 검색·답변용 문서 구성 (GEO/AEO)
+
+- `#questions`의 질문 6개는 화면에 펼쳐진 HTML로 제공하며, 각 질문에 고유 주소(`#faq-…`)를 둔다. 기존 설치·제작 프롬프트와 함께 사람과 검색 도구가 같은 본문을 읽는다.
+- `#sources`에 관리자, 내용 확인일, 프로젝트 원문과 확인 당시 버전을 표시한다. JSON-LD의 `about`은 대상 저장소, `citation`은 실제 근거 문서, `lastReviewed`는 본문 확인일과 일치시킨다. 설치 요구사항은 `ee4709bdff441190a30782f2cd419a4463850874`의 README·CLAUDE·새 환경 설치 문서로 대조했다.
+- `llms.txt`는 문서 안내를 원하는 AI 도구가 원문을 찾도록 돕는 보조 파일이다. HTML의 `rel="describedby"`와 본문의 링크로 발견할 수 있다. Google Search는 이 파일을 특별하게 사용하지 않으며, AI 검색 노출이나 순위 상승을 보장하지 않는다. 명령 전체를 복제하지 않고 정본 문서에 연결해 내용 불일치를 줄인다.
+- `robots.txt`의 `User-agent: * / Allow: /`는 OAI-SearchBot·Googlebot·Bingbot을 포함한 검색봇 수집을 허용한다. OpenAI의 검색용 OAI-SearchBot과 학습용 GPTBot은 별도 설정이다. 이번 작업에서는 기존 수집 정책을 유지했다.
+- Google의 FAQ 리치 결과는 2026-05-07 종료되어, FAQ 확장 노출을 목적으로 별도 스키마를 추가하지 않는다. 질문·답변은 독자가 내용을 찾기 쉽게 구성하고, 기존 사이트·페이지·영상 구조화 데이터는 실제 본문에 맞춘다.
+- 수정 후 HTML의 고유 ID와 내부 링크, JSON-LD, 본문·사이트맵 날짜, `llms.txt` 링크를 확인한다. 배포한 `/llms.txt`가 UTF-8 텍스트로 제공되는지도 확인한다. 검색봇 이름으로 보낸 HTTP 200 응답은 공개 접근 확인이며, 실제 검색봇 방문이나 색인·인용 완료의 증거는 아니다.
+- 성과는 소유 확인을 마친 Search Console의 생성형 AI 실적 보고서, 검색엔진 관리 도구 및 실제 답변의 출처 링크로 확인한다. 이 저장소에는 방문 분석 도구를 추가하지 않았다.
+
+기준 문서: [Google 생성형 AI 검색 가이드](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide),
+[Google FAQ 기능 종료 기록](https://developers.google.com/search/updates#may-2026),
+[OpenAI 검색봇 안내](https://developers.openai.com/api/docs/bots),
+[llms.txt 제안](https://llmstxt.org/).
+
 ## 프롬프트를 고칠 때
 
 - 프롬프트의 명령·순서는 entry-vibe-coding 저장소의 `CLAUDE.md`("환경 준비"·검증 사다리)와 `README.md`(빠른 시작)가 정본이다.
@@ -60,6 +76,7 @@ AI 코딩 도우미(Codex, Claude Code 등)에게 [entry-vibe-coding](https://gi
 
 ## 바뀐 기록
 
+- 2026-10-17 — 시작 전 질문 6개, 질문별 주소, 관리자·확인일·원문 출처, 프로젝트를 설명하는 구조화 데이터와 `llms.txt` 문서 길잡이를 추가했다. 설치 조건과 실행 검증 범위를 보완했다.
 - 2026-10-17 — 네이버 IndexNow 갱신 알림을 위한 공개 검증 파일과 운영 안내를 추가했다.
 - 2026-10-17 — 검색 제목·설명, 대표 URL, 사이트맵·robots.txt, 사이트·페이지·영상 구조화 데이터, 공유 이미지와 파일형 아이콘을 추가했다. 소개 문단과 페이지 목차를 보완했다.
 - 2026-10-17 — 준비물 안내 위에 사용법 영상과 YouTube 바로 가기를 추가했다. 영상은 화면 폭에 맞춰 16:9 비율로 표시된다.
