@@ -3,6 +3,7 @@
 AI 코딩 도우미(Codex, Claude Code 등)에게 [entry-vibe-coding](https://github.com/205sla/entry-vibe-coding)
 저장소 링크를 주고 엔트리 작품을 만드는 법을 설명하는 한 페이지짜리 정적 사이트다.
 환경 준비·게임 요청 프롬프트를 버튼 하나로 복사할 수 있다.
+페이지 상단에서 [무료 GPT로 엔트리 바이브코딩 하는 법](https://www.youtube.com/watch?v=BsLaQeJpaKE) 영상을 볼 수 있다.
 
 - 라이브: https://바이브코딩.엔트리.org/ (`https://xn--o01b54khubg9qb1j.xn--oy2b95t44j.org/`)
   — 옛 주소 `205sla.github.io/entry-vibe-coding-guide/` 는 여기로 넘어간다.
@@ -24,7 +25,8 @@ AI 코딩 도우미(Codex, Claude Code 등)에게 [entry-vibe-coding](https://gi
 | `app.js` | 복사 버튼 — `navigator.clipboard`, 안 되면 textarea 폴백 |
 | `.nojekyll` | Pages 의 Jekyll 처리 끄기 |
 
-빌드 과정과 외부 의존성(폰트·CDN)이 없다. `index.html` 을 브라우저로 바로 열어 확인할 수 있다.
+별도 빌드나 패키지 설치 없이 `index.html` 을 브라우저로 바로 열어 확인할 수 있다.
+영상은 YouTube 개인정보 보호 강화 모드(`youtube-nocookie.com`)로 임베드하며, 재생에는 인터넷 연결이 필요하다.
 
 ## 프롬프트를 고칠 때
 
@@ -37,6 +39,7 @@ AI 코딩 도우미(Codex, Claude Code 등)에게 [entry-vibe-coding](https://gi
 
 ## 바뀐 기록
 
+- 2026-10-17 — 준비물 안내 위에 사용법 영상과 YouTube 바로 가기를 추가했다. 영상은 화면 폭에 맞춰 16:9 비율로 표시된다.
 - 2026-10-02 — 빈 Windows 노트북 + 무료 Codex 녹화에서 나온 문제를 반영했다.
   - 환경 준비 첫 단계에서 Node·npm·git 을 확인하고, 없을 때만 설치한다. 새 터미널에서도 쓸 수 있게 한다(AI 도구에 내장된 git 만 쓰고 끝나는 일 방지).
   - 설치 명령은 처음부터 권한을 요청한다(샌드박스 재시도 왕복 방지).
