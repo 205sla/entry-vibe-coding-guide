@@ -39,14 +39,15 @@ AI 코딩 도우미(Codex, Claude Code 등)에게 [entry-vibe-coding](https://gi
 - 영상 게시 시각(`2026-10-07T17:00:35+09:00`)과 길이(`PT11M47S`)는 2026-10-17에 YouTube 공개 플레이어 정보로 확인했다. 영상이 바뀌면 본문의 날짜·길이와 JSON-LD도 함께 갱신한다. `embedUrl`은 실제 iframe 주소이며, YouTube 시청 페이지를 영상 파일 주소인 `contentUrl`로 사용하지 않는다.
 - 페이지의 주요 내용이 바뀌면 `sitemap.xml`의 `lastmod`와 `WebPage.dateModified`를 실제 수정일로 갱신한다. 검색 결과용 아이콘과 공유 이미지는 같은 도메인에서 제공한다.
 - 사이트맵 주소: `https://xn--o01b54khubg9qb1j.xn--oy2b95t44j.org/sitemap.xml`. Google Search Console·네이버 서치어드바이저의 소유 확인 및 사이트맵 제출은 각 계정에서 별도로 진행한다. 현재 저장소에는 이 두 관리 도구의 소유 확인용 토큰이 없다.
-- IndexNow는 루트의 `indexnow-key.txt`로 사이트를 검증한다. 이 파일은 프로토콜에 따라 공개하는 값이며, 관리 도구 계정의 비밀번호나 비밀 API 자격 증명이 아니다. 배포 후 `https://searchadvisor.naver.com/indexnow`에 대표 URL을 전달하고, `key`는 파일 내용, `keyLocation`은 `https://xn--o01b54khubg9qb1j.xn--oy2b95t44j.org/indexnow-key.txt`로 지정한다. HTTP 200은 정상 수신, 202는 수신 후 키 확인 중이다. 요청 수신과 실제 색인은 구분한다.
+- IndexNow는 루트의 `indexnow-key.txt`로 사이트를 검증한다. 이 파일은 프로토콜에 따라 공개하는 값이며, 관리 도구 계정의 비밀번호나 비밀 API 자격 증명이 아니다. 배포 후 공통 접수처 `https://api.indexnow.org/indexnow`에 대표 URL을 전달하고, `key`는 파일 내용, `keyLocation`은 `https://xn--o01b54khubg9qb1j.xn--oy2b95t44j.org/indexnow-key.txt`로 지정한다. HTTP 200은 정상 수신, 202는 수신 후 키 확인 중이다. 요청 수신과 실제 색인은 구분한다.
+- 2026-10-17 갱신 요청: 공통 접수처에서 HTTP 202(수신·키 검증 대기)를 확인했다. 네이버 개별 접수처는 HTTP 422(URL 검증 오류)를 반환했다. 실제 색인 완료 여부는 확인하지 않았다.
 - 배포 후 `/`, `/robots.txt`, `/sitemap.xml`, `/assets/social-preview.png`, `/favicon.svg`, `/favicon.ico`가 HTTP 200으로 제공되는지 확인한다. 실제 색인 여부는 검색엔진 관리 도구에서 확인한다.
 
 기준 문서: [Google 대표 URL](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls),
 [사이트맵](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap),
 [영상 구조화 데이터](https://developers.google.com/search/docs/appearance/structured-data/video),
 [네이버 검색엔진 최적화](https://searchadvisor.naver.com/guide/seo-basic-intro),
-[IndexNow 검증 파일](https://searchadvisor.naver.com/guide/indexnow-api-key)·[갱신 요청](https://searchadvisor.naver.com/guide/indexnow-request).
+[IndexNow 검증 파일](https://searchadvisor.naver.com/guide/indexnow-api-key)·[갱신 요청](https://searchadvisor.naver.com/guide/indexnow-request)·[공통 접수처](https://www.indexnow.org/faq).
 
 ## 프롬프트를 고칠 때
 
