@@ -27,5 +27,6 @@
 
 ## Optional
 
+- [205 엔트리 도구 모음](https://entry-tools.205.kr/): 페이지 하단의 ‘다른 도구 보러가기’ 버튼으로 연결되는 도구 모음.
 - [사용법 영상](https://www.youtube.com/watch?v=BsLaQeJpaKE): 205와 엔트리의 「무료 GPT로 엔트리 바이브코딩 하는 법」.
 - [안내 페이지 소스](https://github.com/205sla/entry-vibe-coding-guide): 이 웹사이트의 HTML, 스타일과 운영 문서.
