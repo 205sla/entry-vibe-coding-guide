@@ -208,6 +208,7 @@ details.alt > .prompt { margin: 0 12px 12px; }
 .answer h3 a { display: inline-block; color: var(--text); text-decoration: none; }
 .answer h3 a:hover { text-decoration: underline; }
 .answer p { margin: 0; }
+.answer p + p { margin-top: 10px; }
 .answer .answer-source { margin-top: 8px; font-size: 0.9rem; color: var(--muted); }
 .source-list { padding-left: 24px; }
 .source-list li + li { margin-top: 6px; }
